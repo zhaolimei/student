@@ -52,9 +52,8 @@ public class DormitoryActivity extends AppCompatActivity implements View.OnClick
         button9.setOnClickListener(this);
         button13.setOnClickListener(this);
         button14.setOnClickListener(this);
-        ToolBar toolBar = new ToolBar(getWindow().getDecorView());
-        toolBar.back.setOnClickListener(this);
-        toolBar.personalInformation.setOnClickListener(this);
+        title title = new title(getWindow().getDecorView());
+        title.back.setOnClickListener(this);
         SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
         String gender = pref.getString("gender", "");
 
@@ -108,7 +107,7 @@ public class DormitoryActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(DormitoryActivity.this, SelectionActivity.class);
+        Intent intent = new Intent(DormitoryActivity.this, FillRoommateActivity.class);
         SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
         switch (v.getId()) {
             case R.id.fifth_floor:
@@ -151,10 +150,7 @@ public class DormitoryActivity extends AppCompatActivity implements View.OnClick
                 Intent intentBack = new Intent(this, MainActivity.class);
                 startActivity(intentBack);
                 break;
-            case R.id.personal_information:
-                Intent toPersonal = new Intent(this, PersonalActivity.class);
-                startActivity(toPersonal);
-                break;
+
         }
     }
 }

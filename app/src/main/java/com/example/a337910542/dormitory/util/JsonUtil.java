@@ -10,7 +10,7 @@ import com.example.a337910542.dormitory.bean.StudentInformation;
 import org.json.JSONObject;
 
 /**
- * Created by xiaozhang on 2017/11/24.
+ * Created by a337910542 on 2017/11/24.
  */
 
 public class JsonUtil {
@@ -35,7 +35,7 @@ public class JsonUtil {
 
     public static StudentInformation parseInformationJson(String responseData){
         StudentInformation studentInformation = null;
-        try{
+        try {
             studentInformation = new StudentInformation();
             JSONObject jsonObject = new JSONObject(responseData);
 
@@ -47,12 +47,15 @@ public class JsonUtil {
             studentInformation.setStuName(jsonObject1.getString("name"));
             studentInformation.setStuGender(jsonObject1.getString("gender"));
             studentInformation.setStuVcode(jsonObject1.getString("vcode"));
-            if(jsonObject1.has("room")){
+            if (jsonObject1.has("room")) {
                 studentInformation.setStuRoom(jsonObject1.getString("room"));
-            }
+            }else
+            { studentInformation.setStuRoom("暂未办理入住");}
+
             if(jsonObject1.has("building")){
                 studentInformation.setStuBuilding(jsonObject1.getString("building"));
-            }
+            }else
+            { studentInformation.setStuBuilding("暂未办理入住");}
             studentInformation.setStuLocation(jsonObject1.getString("location"));
             studentInformation.setStuGrade(jsonObject1.getString("grade"));
         }catch (Exception e){

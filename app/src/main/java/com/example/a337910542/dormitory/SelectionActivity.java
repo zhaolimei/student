@@ -23,9 +23,8 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
         String s = pref.getString("building","");
         Log.d("几号楼", s);
         initView();
-        ToolBar toolBar = new ToolBar(getWindow().getDecorView());
-        toolBar.back.setOnClickListener(this);
-        toolBar.personalInformation.setOnClickListener(this);
+        title title = new title(getWindow().getDecorView());
+        title.back.setOnClickListener(this);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
@@ -47,35 +46,31 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
                 editor.putString("number","1");
                 editor.commit();
                 Log.d("单人选","单人");
-                Intent intent1 = new Intent(SelectionActivity.this, FillRoommateActivity.class);
+                Intent intent1 = new Intent(SelectionActivity.this, DormitoryActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.two_person:
                 editor.putString("number", "2");
                 editor.commit();
-                Intent intent2 = new Intent(SelectionActivity.this, FillRoommateActivity.class);
+                Intent intent2 = new Intent(SelectionActivity.this, DormitoryActivity.class);
                 Log.d("两人选","两人");
                 startActivity(intent2);
                 break;
             case R.id.three_person:
                 editor.putString("number", "3");
                 editor.commit();
-                Intent intent3 = new Intent(SelectionActivity.this, FillRoommateActivity.class);
+                Intent intent3 = new Intent(SelectionActivity.this, DormitoryActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.four_person:
                 editor.putString("number", "4");
                 editor.commit();
-                Intent intent4 = new Intent(SelectionActivity.this, FillRoommateActivity.class);
+                Intent intent4 = new Intent(SelectionActivity.this, DormitoryActivity.class);
                 startActivity(intent4);
                 break;
             case R.id.back_login:
                 Intent intentBack = new Intent(this, MainActivity.class);
                 startActivity(intentBack);
-                break;
-            case R.id.personal_information:
-                Intent toPersonal = new Intent(this, PersonalActivity.class);
-                startActivity(toPersonal);
                 break;
             default:
                 break;

@@ -2,31 +2,136 @@
 <RelativeLayout          xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE9E9"
     >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
-        <include layout="@layout/toolbar"/>
+        <include layout="@layout/title"/>
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="学号："
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/stuid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:text="学生学号"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="姓名："
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/stuname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:text="学生姓名"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="性别："
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/stugender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:text="学生性别"
+                    android:gravity="center_vertical"
+                    >
+                </TextView>
+            </LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
+            android:layout_height="30dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:orientation="horizontal" >
 
+            <TextView
+                android:id="@+id/targetBuilding"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="目标宿舍楼："
+                android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/targetBuildingNum"
+                android:layout_width="300dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="楼号"
+                android:gravity="center_vertical">
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="同住人信息"
+            android:id="@+id/sameroom"
+            android:background="#FFCBCBCC"
+            android:textSize="17dp"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/stuid_text1"
                 android:layout_width="90dp"
@@ -34,13 +139,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:text="学号一："
-                android:textSize="20dp"/>
+                android:textSize="17dp"/>
             <EditText
                 android:id="@+id/first_stuid"
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textAlignment="center"
                 android:hint="学号一"
                 android:gravity="center_vertical"
@@ -50,10 +155,9 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/vcode_text1"
@@ -62,13 +166,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:text="校验码："
-                android:textSize="20dp"/>
+                android:textSize="17dp"/>
             <EditText
                 android:id="@+id/code1"
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textAlignment="center"
                 android:hint="校验码"
                 android:gravity="center_vertical"
@@ -77,10 +181,9 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/stuid_text2"
@@ -89,14 +192,14 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:text="学号二："
-                android:textSize="20dp" />
+                android:textSize="17dp" />
 
             <EditText
                 android:id="@+id/second_stuid"
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textAlignment="center"
                 android:hint="学号二"
                 android:gravity="center_vertical"
@@ -105,10 +208,9 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/vcode_text2"
                 android:layout_width="90dp"
@@ -116,13 +218,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:text="校验码："
-                android:textSize="20dp"/>
+                android:textSize="17dp"/>
             <EditText
                 android:id="@+id/code2"
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textAlignment="center"
                 android:hint="校验码"
                 android:gravity="center_vertical"
@@ -131,10 +233,9 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/stuid_text3"
@@ -143,13 +244,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:text="学号三："
-                android:textSize="20dp"/>
+                android:textSize="17dp"/>
             <EditText
                 android:id="@+id/third_stuid"
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textAlignment="center"
                 android:hint="学号三"
                 android:gravity="center_vertical"
@@ -161,10 +262,9 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/vcode_text3"
                 android:layout_width="90dp"
@@ -172,32 +272,47 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:text="校验码："
-                android:textSize="20dp"/>
+                android:textSize="17dp"/>
             <EditText
                 android:id="@+id/code3"
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textAlignment="center"
                 android:hint="校验码"
                 android:gravity="center_vertical"
                 >
             </EditText>
         </LinearLayout>
-        <Button
-            android:id="@+id/commitInformation"
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/input1"
+            android:layout_height="match_parent"
+
             android:layout_marginTop="10dp"
-            android:background="#3aadfd"
-            android:text="提交"
-            android:textColor="#ffffff"
-            android:textSize="18dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="28dp"
-            android:layout_marginRight="28dp"/>
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/commitInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input1"
+                android:layout_alignParentBottom="true"
+                android:background="#3F51B5"
+                android:text="确认选宿舍"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:layout_centerHorizontal="true"
+
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"/>
+
+
+         </LinearLayout>
+
+
     </LinearLayout>
 
 </RelativeLayout>

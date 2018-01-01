@@ -39,16 +39,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //执行登陆跳转
     void ifIntent(LoginResult loginResult){
-        if(loginResult.getErrCode().equals("0")){
-            Toast.makeText(MainActivity.this,"登陆成功", Toast.LENGTH_LONG).show();
-            String uName = userName.getText().toString();
-            Log.d("wenben",uName);
-            SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-            editor.putString("stuid",uName);
-            editor.commit();
-            Intent intent = new Intent(MainActivity.this, PersonalActivity.class);
-            intent.putExtra("userName",uName);
-            startActivity(intent);
+
+        if(loginResult.getErrCode().equals("0"))
+        {
+                Toast.makeText(MainActivity.this,"登陆成功", Toast.LENGTH_LONG).show();
+                String uName = userName.getText().toString();
+                Log.d("wenben",uName);
+                SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+                editor.putString("stuid",uName);
+                editor.commit();
+                Intent intent = new Intent(MainActivity.this, PersonalActivity.class);
+                intent.putExtra("userName",uName);
+                startActivity(intent);
         }else{
             Toast.makeText(MainActivity.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
         }

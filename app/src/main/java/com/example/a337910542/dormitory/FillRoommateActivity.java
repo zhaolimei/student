@@ -23,7 +23,7 @@ public class FillRoommateActivity extends AppCompatActivity implements View.OnCl
     public static final int SELECTION_RESULT = 1;
     private EditText stuid1, code1, stuid2, code2, stuid3, code3;
     private Button commitButton;
-    private TextView stuidt1, vcodet1, stuidt2, vcodet2, stuidt3, vcodet3;
+    private TextView stuid,stuname,stugender,targetBuildingNum,sameroom,stuidt1, vcodet1, stuidt2, vcodet2, stuidt3, vcodet3;
 
 
     private Handler mHandler = new Handler() {
@@ -43,15 +43,33 @@ public class FillRoommateActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_roommate);
         initView();
-        ToolBar toolBar = new ToolBar(getWindow().getDecorView());
-        toolBar.back.setOnClickListener(this);
-        toolBar.personalInformation.setOnClickListener(this);
+        title title = new title(getWindow().getDecorView());
+        title.back.setOnClickListener(this);
 
         SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
         Log.d("几人",pref.getString("number",""));
+        stuid.setText(pref.getString("stuid",""));
+        stuname.setText(pref.getString("stuname",""));
+        stugender.setText(pref.getString("stugender",""));
+        targetBuildingNum.setText(pref.getString("building","")+"号楼");
+
 
         Integer number = Integer.parseInt(pref.getString("number","0"));
         switch(number) {
+            case 1:
+                sameroom.setVisibility(View.INVISIBLE);
+                stuid1.setVisibility(View.INVISIBLE);
+                code1.setVisibility(View.INVISIBLE);
+                stuidt1.setVisibility(View.INVISIBLE);
+                vcodet1.setVisibility(View.INVISIBLE);
+                stuid2.setVisibility(View.INVISIBLE);
+                code2.setVisibility(View.INVISIBLE);
+                stuid3.setVisibility(View.INVISIBLE);
+                code3.setVisibility(View.INVISIBLE);
+                stuidt2.setVisibility(View.INVISIBLE);
+                vcodet2.setVisibility(View.INVISIBLE);
+                stuidt3.setVisibility(View.INVISIBLE);
+                vcodet3.setVisibility(View.INVISIBLE);
 
             case 2:
                 stuid2.setVisibility(View.INVISIBLE);
@@ -72,6 +90,11 @@ public class FillRoommateActivity extends AppCompatActivity implements View.OnCl
     }
 
     void initView() {
+        sameroom=(TextView)findViewById(R.id.sameroom);
+        stuid=(TextView)findViewById(R.id.stuid);
+        stuname=(TextView)findViewById(R.id.stuname);
+        stugender=(TextView)findViewById(R.id.stugender);
+        targetBuildingNum=(TextView)findViewById(R.id.targetBuildingNum);
         commitButton = (Button)findViewById(R.id.commitInformation);
         stuid1 = (EditText) findViewById(R.id.first_stuid);
         code1 =(EditText) findViewById(R.id.code1);
@@ -147,9 +170,6 @@ public class FillRoommateActivity extends AppCompatActivity implements View.OnCl
             Intent intentBack = new Intent(this, MainActivity.class);
             startActivity(intentBack);
         }
-        else if(v.getId() == R.id.personal_information){
-            Intent toPersonal = new Intent(this, PersonalActivity.class);
-            startActivity(toPersonal);
-        }
+
     }
 }

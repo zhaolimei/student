@@ -20,12 +20,15 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * Created by xiaozhang on 2017/11/23.
+ * Created by a337910542 on 2017/11/23.
  */
 
 public class HttpUtil {
+    //https与http的通信，在我看来主要的区别在于https多了一个安全验证机制，而Android采用的是X509验证，
+    // 首先我们需要这重写X509类，建立我们的验证规则、不过对于特定的项目，我们一般都是无条件信任服务端的，
+    // 因此我们可以对任何证书都无条件信任
 
-    // 函数功能：忽略证书信任
+    // 忽略证书信任 信任所有主机-对于任何证书都不做检查
     private static void initTrustSSL() {
         try {
             SSLContext sslCtx = SSLContext.getInstance("TLS");
@@ -57,7 +60,7 @@ public class HttpUtil {
             e.printStackTrace();
         }
     }
-    //函数功能：向服务器发送请求
+    //向服务器发送请求
     public static void queryFrom(final String address, final HttpCallbackListener listener){
 
         Log.d("login", address);
@@ -97,7 +100,7 @@ public class HttpUtil {
         }).start();
     }
 
-    //函数功能：向服务器发送请求
+    //向服务器发送请求
     /*if(v.getId() == R.id.fifth_floor){
             final String url = "https://api.mysspku.com/index.php/V1/MobileCourse/SelectRoom";
             HttpUtil.postSelection(url, new HttpCallbackListener() {

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a337910542.dormitory.bean.StudentInformation;
 import com.example.a337910542.dormitory.util.HttpCallbackListener;
@@ -51,17 +52,13 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_personal);
         initView();
 
-        //获取登陆活动传递过来的用户id
-//        Intent intent = getIntent();
-//        String uName = intent.getStringExtra("userName");
         SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
         String uName = pref.getString("stuid","");
         Log.d("personal", uName);
 
         searchDormitory.setOnClickListener(this);
-        ToolBar toolBar = new ToolBar(getWindow().getDecorView());
-        toolBar.back.setOnClickListener(this);
-        toolBar.personalInformation.setOnClickListener(this);
+        title title = new title(getWindow().getDecorView());
+        title.back.setOnClickListener(this);
 
         //get请求
         final String informationUrl = "https://api.mysspku.com/index.php/V1/MobileCourse/getDetail?stuid="+uName;
@@ -75,8 +72,6 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         studentVcode =(TextView)  findViewById(R.id.stuvcode);
         studentRoom = (TextView) findViewById(R.id.sturoom);
         studentBuilding =(TextView)  findViewById(R.id.stubuilding);
-        studentLocation = (TextView) findViewById(R.id.stulocation);
-        studentGrade = (TextView) findViewById(R.id.stugrade);
         searchDormitory =(Button) findViewById(R.id.search_dormitory);
     }
 
@@ -111,8 +106,6 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         studentVcode.setText(studentInformation.getStuVcode());
         studentRoom.setText(studentInformation.getStuRoom());
         studentBuilding.setText(studentInformation.getStuBuilding());
-        studentLocation.setText(studentInformation.getStuLocation());
-        studentGrade.setText(studentInformation.getStuGrade());
         SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
         editor.putString("name", studentInformation.getStuName());
         if(studentInformation.getStuGender().equals("男")){
@@ -120,24 +113,29 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
         }else {
             editor.putString("gender", "2");
         }
+        editor.putString("stuid",studentInformation.getStuId());//保存用户名 学号 性别信息
+        editor.putString("stuname",studentInformation.getStuName());
+        editor.putString("stugender",studentInformation.getStuGender());
         editor.putString("vcode", studentInformation.getStuVcode());
         editor.apply();
     }
 
     @Override
     public void onClick(View v) {
+        Log.d("办理","search");
         if(v.getId() == R.id.search_dormitory){
-            Log.d("查询","search");
-            Intent intent = new Intent(PersonalActivity.this, DormitoryActivity.class);
-            startActivity(intent);
+
+            if(studentBuilding.getText().equals("暂未办理入住"))
+            {
+                Intent intent = new Intent(PersonalActivity.this, SelectionActivity.class);
+                startActivity(intent);
+            } else{
+                Toast.makeText(this, "已办理住宿", Toast.LENGTH_SHORT).show();
+            }
         }
         else if(v.getId() == R.id.back_login){
             Intent intentBack = new Intent(this, MainActivity.class);
             startActivity(intentBack);
-        }
-        else if(v.getId() == R.id.personal_information){
-            Intent toPersonal = new Intent(PersonalActivity.this, PersonalActivity.class);
-            startActivity(toPersonal);
         }
     }
 }
